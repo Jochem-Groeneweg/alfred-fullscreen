@@ -1,0 +1,230 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>bundleid</key>
+	<string>com.jochemgroeneweg.alfred.fullscreen</string>
+	<key>category</key>
+	<string>Productivity</string>
+	<key>connections</key>
+	<dict>
+		<key>8F537504-61C2-45F5-804E-9227A606AD2C</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>05541C64-95AE-43AD-B735-DB48102A0425</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
+		<key>B7A966C0-E65D-4AD4-9EA7-8847EC6346B2</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>F2682C8E-5D78-4E6D-8ED6-21BF49485C99</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
+	</dict>
+	<key>createdby</key>
+	<string>Jochem Groeneweg</string>
+	<key>description</key>
+	<string>A simple but powerful Alfred workflow to toggle fullscreen mode for your applications.</string>
+	<key>disabled</key>
+	<false/>
+	<key>name</key>
+	<string>Fullscreen</string>
+	<key>objects</key>
+	<array>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>concurrently</key>
+				<false/>
+				<key>escaping</key>
+				<integer>102</integer>
+				<key>script</key>
+				<string>osascript fullscreenFrontmostApp.scpt</string>
+				<key>scriptargtype</key>
+				<integer>1</integer>
+				<key>scriptfile</key>
+				<string></string>
+				<key>type</key>
+				<integer>0</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.script</string>
+			<key>uid</key>
+			<string>F2682C8E-5D78-4E6D-8ED6-21BF49485C99</string>
+			<key>version</key>
+			<integer>2</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>argumenttype</key>
+				<integer>2</integer>
+				<key>keyword</key>
+				<string>fs</string>
+				<key>subtext</key>
+				<string>Toggles fullscreen mode for the frontmost app</string>
+				<key>text</key>
+				<string>Fullscreen current app</string>
+				<key>withspace</key>
+				<false/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.input.keyword</string>
+			<key>uid</key>
+			<string>B7A966C0-E65D-4AD4-9EA7-8847EC6346B2</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>concurrently</key>
+				<false/>
+				<key>escaping</key>
+				<integer>68</integer>
+				<key>script</key>
+				<string>osascript fullscreenSelectedApp.scpt "{query}"</string>
+				<key>scriptargtype</key>
+				<integer>0</integer>
+				<key>scriptfile</key>
+				<string></string>
+				<key>type</key>
+				<integer>0</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.script</string>
+			<key>uid</key>
+			<string>05541C64-95AE-43AD-B735-DB48102A0425</string>
+			<key>version</key>
+			<integer>2</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>alfredfiltersresults</key>
+				<true/>
+				<key>alfredfiltersresultsmatchmode</key>
+				<integer>3</integer>
+				<key>argumenttreatemptyqueryasnil</key>
+				<true/>
+				<key>argumenttrimmode</key>
+				<integer>0</integer>
+				<key>argumenttype</key>
+				<integer>0</integer>
+				<key>escaping</key>
+				<integer>68</integer>
+				<key>keyword</key>
+				<string>fs</string>
+				<key>queuedelaycustom</key>
+				<integer>3</integer>
+				<key>queuedelayimmediatelyinitially</key>
+				<true/>
+				<key>queuedelaymode</key>
+				<integer>0</integer>
+				<key>queuemode</key>
+				<integer>1</integer>
+				<key>runningsubtext</key>
+				<string>Gathering running applications...</string>
+				<key>script</key>
+				<string>./generateAppList.sh {query}</string>
+				<key>scriptargtype</key>
+				<integer>0</integer>
+				<key>scriptfile</key>
+				<string></string>
+				<key>subtext</key>
+				<string>Toggle the selected application into full screen / windowed</string>
+				<key>title</key>
+				<string>Toggle full screen state of an application</string>
+				<key>type</key>
+				<integer>0</integer>
+				<key>withspace</key>
+				<true/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.input.scriptfilter</string>
+			<key>uid</key>
+			<string>8F537504-61C2-45F5-804E-9227A606AD2C</string>
+			<key>version</key>
+			<integer>3</integer>
+		</dict>
+	</array>
+	<key>readme</key>
+	<string>A simple but powerful Alfred workflow to toggle fullscreen mode for your applications.
+
+## Features
+
+- **Toggle Fullscreen for Frontmost App:** Quickly toggle fullscreen mode for the currently active application.
+- **Toggle Fullscreen for a Specific App:** Search through your open applications and toggle fullscreen mode for the one you select.
+
+## Usage
+
+1.  **Toggle Frontmost App:**
+    - Type `fs` in Alfred.
+    - Press `Enter`.
+    - The frontmost application will enter or exit fullscreen mode.
+
+2.  **Toggle Specific App:**
+    - Type `fs` followed by a space and the name of an open application (e.g., `fs outlook`).
+    - Alfred will show a list of matching open applications.
+    - Select the desired application and press `Enter`.
+    - The selected application will enter or exit fullscreen mode.
+
+## Installation
+
+1.  Download the latest version of the workflow from the GitHub releases page.
+2.  Double-click the `.alfredworkflow` file to install it in Alfred.</string>
+	<key>uidata</key>
+	<dict>
+		<key>05541C64-95AE-43AD-B735-DB48102A0425</key>
+		<dict>
+			<key>xpos</key>
+			<real>500</real>
+			<key>ypos</key>
+			<real>130</real>
+		</dict>
+		<key>8F537504-61C2-45F5-804E-9227A606AD2C</key>
+		<dict>
+			<key>xpos</key>
+			<real>300</real>
+			<key>ypos</key>
+			<real>160</real>
+		</dict>
+		<key>B7A966C0-E65D-4AD4-9EA7-8847EC6346B2</key>
+		<dict>
+			<key>xpos</key>
+			<real>300</real>
+			<key>ypos</key>
+			<real>15</real>
+		</dict>
+		<key>F2682C8E-5D78-4E6D-8ED6-21BF49485C99</key>
+		<dict>
+			<key>xpos</key>
+			<real>500</real>
+			<key>ypos</key>
+			<real>15</real>
+		</dict>
+	</dict>
+	<key>userconfigurationconfig</key>
+	<array/>
+	<key>variablesdontexport</key>
+	<array/>
+	<key>version</key>
+	<string>1.0.0</string>
+	<key>webaddress</key>
+	<string>https://github.com/Jochem-Groeneweg/alfred-fullscreen</string>
+</dict>
+</plist>
